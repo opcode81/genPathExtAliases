@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import re
 import sys
@@ -5,9 +6,9 @@ import sys
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1 or args[0] not in ("msys", "cygwin"):
-		print "usage: genPathextAliases <cygwin|msys>"
+		print("usage: genPathextAliases <cygwin|msys>")
 		sys.exit(1)
-	with file("pathextAliases.sh", "wb") as f:
+	with open("pathextAliases.sh", "wb") as f:
 		for ext in map(str.lower, os.getenv("PATHEXT").split(";")):
 			if ext in (".exe", ".com"): 
 				continue
